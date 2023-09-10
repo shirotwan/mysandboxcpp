@@ -70,8 +70,8 @@ typedef class cwordl{
 }cwordl;
 
 ostream& operator << (ostream& out, cwordl& cw){
-    if(!(cw.getsplits().empty())){return out << "{ " << cw.get_disp_s_info() << "}";}
-    else{return out << "{ " << cw.get_disp_c_info() << "}";}
+    if(!(cw.getsplits().empty())){return out << "{ " << cw.get_disp_s_info() << "}" << endl;}
+    else{return out << "{ " << cw.get_disp_c_info() << "}" << endl;}
 }
 
 cwordl& cwordl::operator+(cwordl& cw){
