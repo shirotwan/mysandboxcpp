@@ -2,9 +2,12 @@
 #include <vector>
 #include "cwordl.h"
 #include "stats.h"
+#include "Fichero.h"
+#include "Horario.h"
+#include "polyn.h"
 
 int main(){
-    vector<int> g = {1,2,10,7,8};
-    stdc data = g;
-    cout << data.getvar();
+    vector<int>p = {1,3,5,6};
+    pli poly = p;
+    cout << poly;
 }
