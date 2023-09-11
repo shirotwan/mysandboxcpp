@@ -7,9 +7,9 @@
 #include "polyn.h"
 
 int main(){
-    vector<int>p = {1,3,5,6};
-    vector<int>q = {1,1,2};
-    pli poly1 = p; pli poly2 = q;
-    cout << poly1 << poly2;
-    cout << poly1 - poly2 << endl;
+    //Brasil - Peru
+    vector<int>b = {1,4,3,5,2,7,2,2,2,4,3,4,3,3};
+    vector<int>p = {0,0,1,0,1,0,0,0,0,2,0,2,0,0};
+    stdc test = p;
+    cout << double(test.get_desvratio()) << endl;
 }

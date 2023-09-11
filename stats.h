@@ -35,6 +35,8 @@ template <class T> class stats{
         T getmediana(){return T((data.size()%2==0)?((ordvec().at(data.size()/2)+ordvec().at(data.size()/2-1))/2):(ordvec().at((data.size()+1)/2-1)));}
         float getvar(){float var;for(auto & e:data){var +=pow(e - getma(),2);}return var/data.size();}
         float getds(){return pow(getvar(),0.5);}
+        float get_pearsondesv(){return 3*(getma()-getmediana())/getds();}
+        float get_desvratio(){return getma()/getds();}
 };
 typedef stats<float> stcc;
 typedef stats<int> stdc;
