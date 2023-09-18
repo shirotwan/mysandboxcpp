@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdio>
-#include <locale>
+
 using namespace std;
 template <class T> class Horario{
 private:
