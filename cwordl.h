@@ -66,14 +66,12 @@ typedef class cwordl{
         virtual void unsplit(){v_split.clear();}
         string ltr(){splitwords(); return "{ " + get_disp_s_info() + "}";}
         cwordl& operator+(cwordl& cw);
-
 }cwordl;
 
 ostream& operator << (ostream& out, cwordl& cw){
     if(!(cw.getsplits().empty())){return out << "{ " << cw.get_disp_s_info() << "}" << endl;}
     else{return out << "{ " << cw.get_disp_c_info() << "}" << endl;}
 }
-
 cwordl& cwordl::operator+(cwordl& cw){
             if(!(cw.getsplits().empty()) && !(this->getsplits().empty())){
                 vector<string> copy_2nd(cw.v_split);
@@ -89,5 +87,4 @@ cwordl& cwordl::operator+(cwordl& cw){
             }
     return *this;
 }
-
 typedef cwordl cw;
