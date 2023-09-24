@@ -5,11 +5,12 @@
 #include "Fichero.h"
 #include "Horario.h"
 #include "polyn.h"
+#include "scimat.h"
+#include "dyncmatx.h"
 
-int main(){
-    //Brasil - Peru
-    vector<int>b = {1,4,3,5,2,7,2,2,2,4,3,4,3,3};
-    vector<int>p = {0,0,1,0,1,0,0,0,0,2,0,2,0,0};
-    stdc test = p;
-    cout << double(test.get_desvratio()) << endl;
+int main()
+{  
+    dyncmatx<float> matrix(3,3);
+    matrix.sd_element(0,2,9);
+    cout << matrix;
 }
