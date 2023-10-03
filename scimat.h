@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cmath>
 #include<vector>
+#include<cctype>
 #include"dyncmatx.h"
 
 using namespace std;
@@ -81,6 +82,17 @@ template <class T> class scimat{
         }
         DECMAT Q(){
             DECMAT matrix(r,c);
+            float unic = 0;
+            for(auto i = 0;i < c;i++){
+                for(auto j = 0;j < r;j++){
+                    unic += pow(mat[j][i],2);
+                }
+                unic = pow(unic,0.5);
+                for(auto k = 0;k < r;k++){
+                    matrix.sd_element(k,i,float(mat[k][i])/unic);
+                }
+                unic = 0;
+            }
             return matrix;
         }
 };

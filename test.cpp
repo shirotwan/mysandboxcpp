@@ -15,4 +15,6 @@ int main()
             test.set_e_mat(i,j,i+j+i*j);
         }
     }
+    dyncmatx<float> trasp = test.t();
+    cout << trasp;
 }
