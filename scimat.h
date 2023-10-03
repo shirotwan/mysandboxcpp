@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cmath>
 #include<vector>
+#include"dyncmatx.h"
 
 using namespace std;
 
@@ -54,21 +55,21 @@ template <class T> class scimat{
                     temp.push_back(mat[i][j]);
                 }
             }
-            return temp.data(); temp.clear();
+            return temp.data();
         }
         T* vec_row(int row_index){
             static vector<T> temp;
             for(int i = 0;i < c;i++){
                 temp.push_back(mat[row_index][i]);
             }
-            return temp.data(); temp.clear();
+            return temp.data();
         }
         T* vec_col(int col_index){
             static vector<T> temp;
             for(int i = 0;i < r;i++){
                 temp.push_back(mat[i][col_index]);
             }
-            return temp.data(); temp.clear();
+            return temp.data();
         }
         void show_vec(){
             T* init_vec = new T[r*c];
@@ -78,26 +79,9 @@ template <class T> class scimat{
             }
             cout << endl;
         }
-        float** Q(){
-            float** res = new float*[r];
-            for(int i = 0;i < r;i++){
-                res[i] = new float[c];
-            }
-            for(int i = 0;i < c;i++){
-                T* temp_vt = vec_col(i);
-                float* temp_f = static_cast<float*>(temp_vt);
-                float su = 0;
-                for(int j = 0;j < r;j++){
-                    su += float(temp_f[j]);
-                }
-                for(int j = 0;j < r;j++){
-                    temp_f[j] /= su;
-                }
-                for(int j = 0;j < r;j++){
-                    res[j][c] = temp_f[j];
-                }
-            }
-            return res;
+        DECMAT Q(){
+            DECMAT matrix(r,c);
+            return matrix;
         }
 };
 

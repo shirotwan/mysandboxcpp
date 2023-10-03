@@ -6,11 +6,13 @@
 #include "Horario.h"
 #include "polyn.h"
 #include "scimat.h"
-#include "dyncmatx.h"
 
 int main()
 {  
-    dyncmatx<float> matrix(3,3);
-    matrix.sd_element(0,2,9);
-    cout << matrix;
+    scimat<float> test(3,3);
+    for(int i = 0;i < 3;i++){
+        for(int j = 0;j < 3;j++){
+            test.set_e_mat(i,j,i+j+i*j);
+        }
+    }
 }
