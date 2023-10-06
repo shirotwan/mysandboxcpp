@@ -9,12 +9,13 @@
 
 int main()
 {  
-    scimat<float> test(3,3);
+    scimat<float> test(3,5);
     for(int i = 0;i < 3;i++){
-        for(int j = 0;j < 3;j++){
-            test.set_e_mat(i,j,i+j+i*j);
+        for(int j = 0;j < 5;j++){
+            test.set_e_mat(i,j,i+j+i*j-3*i);
         }
     }
-    dyncmatx<float> trasp = test.t();
+    dyncmatx<float> trasp = test.Tr();
+    cout << test;
     cout << trasp;
 }

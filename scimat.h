@@ -24,8 +24,8 @@ template <class T> class scimat{
 
         T** get_mat(){return mat;} 
         T get_e_mat(int posr, int posc){return mat[posr][posc];}
-        int get_row_len(){return &r;} 
-        int get_col_len(){return &c;}
+        int get_row_len(){return r;} 
+        int get_col_len(){return c;}
 
         virtual void set_e_mat(int posr, int posc,T val){mat[posr][posc] = val;}
         virtual void display_mat(){
@@ -80,8 +80,8 @@ template <class T> class scimat{
             }
             cout << endl;
         }
-        DECMAT Q(){
-            DECMAT matrix(r,c);
+        dyncmatx<T> Q(){
+            static DECMAT matrix(r,c);
             float unic = 0;
             for(auto i = 0;i < c;i++){
                 for(auto j = 0;j < r;j++){
@@ -95,6 +95,24 @@ template <class T> class scimat{
             }
             return matrix;
         }
+        DECMAT Tr(){
+            static DECMAT mt(c,r);
+            for(auto i = 0;i < c;i++){
+                for(auto j = 0;j < r;j++){
+                    mt.sd_element(i,j,mat[j][i]);
+                }
+            }
+            return mt;
+        }
 };
 
-
+template <typename U>
+ostream& operator << (ostream& out, scimat<U>& mtx){
+    static dyncmatx<U> dispM(mtx.get_row_len(),mtx.get_col_len());
+    for(int i = 0;i < mtx.get_row_len();i++){
+        for(int j = 0;j < mtx.get_col_len();j++){
+            dispM.sd_element(i,j,mtx.get_e_mat(i,j));
+        }
+    }
+    return out << dispM << endl;
+}

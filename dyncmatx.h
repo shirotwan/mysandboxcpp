@@ -54,6 +54,8 @@ template <class T> class dyncmatx{
             cout << dyn[i][j] << " ";
         cout << endl;}
         } 
+
+        void clear_dyn(){this->~dyncmatx();}
 };
 
 template <typename U>
