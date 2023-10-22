@@ -34,19 +34,6 @@ template <class T> class dyncmatx{
         
         int r_len(){return d_r;}
         int c_len(){return d_c;}
-
-        T** dyn_to_2ptr(){
-            T** res = new T*[d_r];
-            for(int i = 0;i < d_r;i++){
-                res[i] = new T [d_c];
-            }
-            for(int i = 0;i < d_r;i++){
-                for(int j = 0;j < d_c;j++){
-                    res[i][j] = gd_element(i,j);
-                }
-            }
-            return res;
-        }
         
         void show_dyn(){
         for (int i = 0; i < dyn.size(); i++) {

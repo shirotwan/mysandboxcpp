@@ -15,7 +15,7 @@ typedef class cwordl{
     private:
         vector<string> v_split; vector<char> c_ptr_in;
         
-        void initS_Char(){c_msg = new char[s_msg.length()+1];c_msg = new char[s_msg.length()];c_msg = (char*)(s_msg.c_str()); //strcpy(c_msg,s_msg.c_str()); unsafe
+        void initS_Char(){c_msg = new char[s_msg.length()+1];c_msg = new char[s_msg.length()];c_msg = (char*)(s_msg.c_str());
         }
         void initC_VChar(){for(int i = 0;i < s_msg.length();i++){c_ptr_in.push_back(tolower(c_msg[i]));}}
         void cleanCache(){s_msg = ""; delete c_msg;}
@@ -71,7 +71,7 @@ typedef class cwordl{
 
 ostream& operator << (ostream& out, cwordl& cw){
     if(!(cw.getsplits().empty())){return out << "{ " << cw.get_disp_s_info() << "}" << endl;}
-    else{return out << "{ " << cw.get_disp_c_info() << "}" << endl;}
+    else{return out << "{ " << cw.get_disp_c_info() << "}" << endl << flush;}
 }
 cwordl& cwordl::operator+(cwordl& cw){
             if(!(cw.getsplits().empty()) && !(this->getsplits().empty())){

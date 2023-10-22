@@ -80,7 +80,7 @@ template <class T> class scimat{
             }
             cout << endl;
         }
-        dyncmatx<T> Q(){
+        DECMAT Q(){
             static DECMAT matrix(r,c);
             float unic = 0;
             for(auto i = 0;i < c;i++){
@@ -95,8 +95,8 @@ template <class T> class scimat{
             }
             return matrix;
         }
-        DECMAT Tr(){
-            static DECMAT mt(c,r);
+        dyncmatx<T> Tr(){
+            static dyncmatx<T> mt(c,r);
             for(auto i = 0;i < c;i++){
                 for(auto j = 0;j < r;j++){
                     mt.sd_element(i,j,mat[j][i]);
