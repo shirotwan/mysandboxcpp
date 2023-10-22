@@ -40,7 +40,7 @@ template <class T> class dyncmatx{
             for(int i = 0;i < d_r;i++){
                 res[i] = new T [d_c];
             }
-            for(int i = 0,i < d_r;i++){
+            for(int i = 0;i < d_r;i++){
                 for(int j = 0;j < d_c;j++){
                     res[i][j] = gd_element(i,j);
                 }

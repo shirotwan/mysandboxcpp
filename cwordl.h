@@ -15,7 +15,8 @@ typedef class cwordl{
     private:
         vector<string> v_split; vector<char> c_ptr_in;
         
-        void initS_Char(){c_msg = new char[s_msg.length()+1];strcpy(c_msg,s_msg.c_str());}
+        void initS_Char(){c_msg = new char[s_msg.length()+1];c_msg = new char[s_msg.length()];c_msg = (char*)(s_msg.c_str()); //strcpy(c_msg,s_msg.c_str()); unsafe
+        }
         void initC_VChar(){for(int i = 0;i < s_msg.length();i++){c_ptr_in.push_back(tolower(c_msg[i]));}}
         void cleanCache(){s_msg = ""; delete c_msg;}
 
@@ -32,8 +33,8 @@ typedef class cwordl{
         void initSdisp(){for(string & s : v_split){temp_disp_s.push_back("[");temp_disp_s.push_back(s);temp_disp_s.push_back("]");temp_disp_s.push_back(" ");}}
     public:
         ~cwordl(){v_split.clear(); c_ptr_in.clear();}
-        cwordl(string s_msg):s_msg(s_msg){cstrct_s(); depurar();}
-        cwordl(vector<char> c_ptr_in):c_ptr_in(c_ptr_in){}
+        cwordl(string s_msg):s_msg(s_msg){cstrct_s(); depurar();splitwords();}
+        cwordl(vector<char> c_ptr_in):c_ptr_in(c_ptr_in){depurar();splitwords();}
         cwordl(cwordl const & input){this->v_split = input.v_split; this->c_ptr_in = input.c_ptr_in;}
 
         vector<char> getsplitc(){return c_ptr_in;}
