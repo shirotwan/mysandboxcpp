@@ -33,6 +33,9 @@ template <class T> class polyn{
         string getout_poly(){return poly_out;}
         polyn<T>& operator+(polyn<T>& cw);
         polyn<T>& operator-(polyn<T>& kd);
+        polyn<T>& operator*(polyn<T>& pr);
+        polyn<T>& operator*(T konst);
+        polyn<T>& operator/(T konst);
 };
 
 typedef polyn<int> pli; typedef polyn<double> pld;
@@ -64,18 +67,48 @@ polyn<T>& polyn<T>::operator-(polyn<T>& kd){
     int pmax_size,pmin_size;
     vector<T>poly_max; vector<T>poly_min;
     pmax_size = max((this->poly).size(),(kd.poly).size()); pmin_size = min((this->poly).size(),(kd.poly).size());
-    if((this->poly).size() >= (kd.poly).size()){
-        poly_max.insert(poly_max.end(),(this->poly).begin(),(this->poly).end());
-        poly_min.insert(poly_min.end(),(kd.poly).begin(),(kd.poly).end());
-    }
-    else{
-        poly_max.insert(poly_max.end(),(kd.poly).begin(),(kd.poly).end());
-        poly_min.insert(poly_min.end(),(this->poly).begin(),(this->poly).end());
-    }
+
     vector<T> res(pmax_size,0);(this->poly).clear();
     for(int u = 0;u < pmax_size;u++){
         res.at(pmax_size-u-1) = (u >= pmin_size)?poly_max.at(pmax_size-u-1):poly_max.at(pmax_size-u-1)-poly_min.at(pmin_size-u-1);
     }
+    this->upload_poly(res);res.clear();
+    return *this;
+}
+
+template<typename T>
+polyn<T>& polyn<T>::operator*(polyn<T>& pr){
+    int pprod_size;
+    pprod_size = (this->poly).size() + (pr.poly).size() - 1;
+    vector<T> res(pprod_size,0);
+    for(int u = 0;u < this->poly.size();u++){
+        for(int v = 0;v < (pr.poly).size();v++){
+            res.at(u+v) += (pr.poly).at(v) * this->poly.at(u);
+        }
+    }
+    (this->poly).clear();
+    this->upload_poly(res);res.clear();
+    return *this;
+}
+
+template<typename T>
+polyn<T>& polyn<T>::operator*(T konst){
+    vector<T> res((this->poly).size(),0);
+    for(int i = 0;i < (this->poly).size();i++){
+        res.at(i) = (this->poly).at(i) * konst;
+    }
+    (this->poly).clear();
+    this->upload_poly(res);res.clear();
+    return *this;
+}
+
+template<typename T>
+polyn<T>& polyn<T>::operator/(T konst){
+    vector<T> res((this->poly).size(),0);
+    for(int i = 0;i < (this->poly).size();i++){
+        res.at(i) = (this->poly).at(i) / konst;
+    }
+    (this->poly).clear();
     this->upload_poly(res);res.clear();
     return *this;
 }
