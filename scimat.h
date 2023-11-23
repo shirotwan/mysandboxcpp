@@ -50,7 +50,7 @@ template <class T> class scimat{
             }
         }
         T* vec(){
-            static vector<T> temp;
+            vector<T> temp;
             for(int i = 0;i < r;i++){
                 for(int j = 0;j < c;j++){
                     temp.push_back(mat[i][j]);
@@ -59,14 +59,14 @@ template <class T> class scimat{
             return temp.data();
         }
         T* vec_row(int row_index){
-            static vector<T> temp;
+            vector<T> temp;
             for(int i = 0;i < c;i++){
                 temp.push_back(mat[row_index][i]);
             }
             return temp.data();
         }
         T* vec_col(int col_index){
-            static vector<T> temp;
+            vector<T> temp;
             for(int i = 0;i < r;i++){
                 temp.push_back(mat[i][col_index]);
             }
@@ -81,7 +81,7 @@ template <class T> class scimat{
             cout << endl;
         }
         DECMAT Q(){
-            static DECMAT matrix(r,c);
+            DECMAT matrix(r,c);
             float unic = 0;
             for(auto i = 0;i < c;i++){
                 for(auto j = 0;j < r;j++){
@@ -96,7 +96,7 @@ template <class T> class scimat{
             return matrix;
         }
         dyncmatx<T> Tr(){
-            static dyncmatx<T> mt(c,r);
+            dyncmatx<T> mt(c,r);
             for(auto i = 0;i < c;i++){
                 for(auto j = 0;j < r;j++){
                     mt.sd_element(i,j,mat[j][i]);
@@ -108,7 +108,7 @@ template <class T> class scimat{
 
 template <typename U>
 ostream& operator << (ostream& out, scimat<U>& mtx){
-    static dyncmatx<U> dispM(mtx.get_row_len(),mtx.get_col_len());
+    dyncmatx<U> dispM(mtx.get_row_len(),mtx.get_col_len());
     for(int i = 0;i < mtx.get_row_len();i++){
         for(int j = 0;j < mtx.get_col_len();j++){
             dispM.sd_element(i,j,mtx.get_e_mat(i,j));
